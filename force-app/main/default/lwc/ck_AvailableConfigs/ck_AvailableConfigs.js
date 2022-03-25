@@ -132,7 +132,6 @@ export default class Ck_AvailableConfigs extends LightningElement {
         });
         if(result){
             if(result.isSuccess === true){
-                console.log('success');
                 this.showToast('Success!','Case Configuration Added Successfully!','success');
                 const payload = { 
                     updated: 'true'
@@ -149,31 +148,24 @@ export default class Ck_AvailableConfigs extends LightningElement {
     }
 
     getSelectedName(event){
-        console.log('selected rows '+JSON.stringify(event.detail.selectedRows));
         let my_ids = [];
         let selectedRows = event.detail.selectedRows;
         for(let i = 0; i< selectedRows.length; i++){
             my_ids.push(selectedRows[i].Id);
         }
         this.sampleSelection.concat(my_ids);
-        console.log('this.sampleSelection '+JSON.stringify(this.sampleSelection));
     }
 
     onHandleSort(event) {
         const { fieldName: sortedBy, sortDirection } = event.detail;
-        console.log('sort '+JSON.stringify(event.detail));
-        console.log('sortedBy '+sortedBy);
         const cloneData = [...this.recordsToDisplay];
-        console.log('cloneData '+JSON.stringify(cloneData));
         cloneData.sort(this.sortBy(sortedBy, sortDirection === 'asc' ? 1 : -1));
-        console.log('cloneData '+JSON.stringify(cloneData));
         this.recordsToDisplay = cloneData;
         this.sortDirection = sortDirection;
         this.sortedBy = sortedBy;
     }
     
     sortBy( field, reverse, primer ) {
-        console.log('here inside this method!!!');
         const key = primer
         ? function( x ) {
             return primer(x[field]);

@@ -103,12 +103,8 @@ export default class Ck_CaseConfigs extends LightningElement {
 
     onHandleSort(event) {
         const { fieldName: sortedBy, sortDirection } = event.detail;
-        console.log('sort '+JSON.stringify(event.detail));
-        console.log('sortedBy '+sortedBy);
         const cloneData = [...this.data];
-        console.log('cloneData '+JSON.stringify(cloneData));
         cloneData.sort(this.sortBy(sortedBy, sortDirection === 'asc' ? 1 : -1));
-        console.log('cloneData '+JSON.stringify(cloneData));
         this.data = cloneData;
         this.sortDirection = sortDirection;
         this.sortedBy = sortedBy;
