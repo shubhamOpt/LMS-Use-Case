@@ -1,0 +1,22 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card title="Case Configs" icon-name="utility:cases">
+        
+        <div class="slds-p-around_medium" align="center">
+            <lightning-button label="Send" onclick={handleSend} disabled={buttonDisabled}> </lightning-button>
+        </div>
+        <template if:true={renderTable}>
+            <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                column-widths-mode="auto"
+                hide-checkbox-column
+                default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={onHandleSort}>
+            </lightning-datatable> 
+        </template>
+    </lightning-card>
+</template>
