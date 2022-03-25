@@ -36,5 +36,13 @@
         <members>*</members>
         <name>LightningMessageChannel</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types>
     <version>54.0</version>
 </Package>
