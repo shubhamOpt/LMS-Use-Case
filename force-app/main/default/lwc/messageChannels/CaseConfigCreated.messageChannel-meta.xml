@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>CaseConfigCreated</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Message Channel to pass Case Config creation updates</description>
+    <lightningMessageFields>
+        <fieldName>updated</fieldName>
+        <description>This is to notify that there are updates</description>
+    </lightningMessageFields>
+</LightningMessageChannel>
