@@ -52,5 +52,9 @@
         <members>*</members>
         <name>CustomObject</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>Layout</name>
+    </types>
     <version>54.0</version>
 </Package>
