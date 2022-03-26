@@ -155,30 +155,32 @@ export default class Ck_AvailableConfigs extends LightningElement {
         }
         this.sampleSelection.concat(my_ids);
     }
-
-    onHandleSort(event) {
-        const { fieldName: sortedBy, sortDirection } = event.detail;
-        const cloneData = [...this.recordsToDisplay];
-        cloneData.sort(this.sortBy(sortedBy, sortDirection === 'asc' ? 1 : -1));
-        this.recordsToDisplay = cloneData;
-        this.sortDirection = sortDirection;
-        this.sortedBy = sortedBy;
-    }
     
-    sortBy( field, reverse, primer ) {
-        const key = primer
-        ? function( x ) {
-            return primer(x[field]);
-        }
-        : function( x ) {
-            return x[field];
+    onHandleSort(event) {       
+        this.sortedBy = event.detail.fieldName;       
+        this.sortDirection = event.detail.sortDirection;       
+        this.sortBy(this.sortedBy, this.sortDirection);
+    }
+
+    sortBy(fieldname, direction) {
+        
+        let parseData = JSON.parse(JSON.stringify(this.recordsToDisplay));
+       
+        let keyValue = (a) => {
+            return a[fieldname];
         };
 
-        return function( a, b ) {
-            a = key(a);
-            b = key(b);
-            return reverse * ( ( a > b ) - ( b > a ) );
-        };
+        let isReverse = direction === 'asc' ? 1: -1;
+
+        parseData.sort((x, y) => {
+            x = keyValue(x) ? keyValue(x) : ''; 
+            y = keyValue(y) ? keyValue(y) : '';
+            
+            return isReverse * ((x > y) - (y > x));
+        });
+        
+        this.recordsToDisplay = parseData;
+
     }
 
 
